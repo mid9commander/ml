@@ -1,0 +1,100 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; plotting utilities
+
+(libload "libplot/plotter")
+
+;; simple class that wraps a plotter and a window in one object
+(defclass plotwin object window pltr)
+(defmethod plotwin plotwin (&optional (w 400) (h 400) (name "Plotting Window"))
+  (setq window (new-window 0 0 w g name))
+  (setq pltr (new plotter)))
+(dfmethod plotwin send-plotter l
+  (eval (cons '==>  (cons pltr l))))
+(defmethod plotwin refresh ()
+  (setq :pltr:rect (list 0 0 (xsize) (ysize)))
+  (==> pltr redisplay))
+(defmethod plotwin psprint (psfile)
+  (let ((window (ps-window 400 400 psfile))) 
+    (graphics-batch
+     (setq :pltr:rect (list 0 0 (xsize) (ysize)))
+     (==> pltr redisplay)))
+  (==> this refresh))
+
+
+#? (plot-function <function> <xmin> <xmax> [<r> <g> <b>])
+;; plot function <function> between <xmin> and <xmax>.
+;; This automatically opens a window and returns
+;; a handle on that window. 
+;; {<pre>
+;;  (de toto (x) (* (exp (- (* x x))) (sin (* 6 x))))
+;;  ;; plot function toto between -4 and 4 in blue
+;;  (setq pwin (plot-function toto -4 4 0 0 1))
+;;  ;; send graph to a postscript file
+;;  (==> pwin psprint "graph.ps")
+;;  ;; close plotting window
+;;  (setq pwin ())
+;; </pre>}
+(df plot-function (f xmin xmax &optional (r 0) (g 0) (b 0))
+  (let* ((pwin (new plotwin 400 400 "Plotting Window"))
+	 (xmin (eval xmin))
+	 (xmax (eval xmax))
+	 (xstep (/ (- xmax xmin) 400))
+	 (r (eval r))
+	 (g (eval g))
+	 (b (eval b)))
+    (==> pwin send-plotter plotfunc (pname f) (eval f) xmin xmax xstep (alloccolor r g b))
+    (==> pwin send-plotter redisplay)
+    pwin))
+
+#? (gplot-function <function> <xmin> <xmax> [<title>] [<epsfile>])
+;; plot function <function> between <xmin> and <xmax>
+;; using GNUplot. This automatically opens a gnuplot
+;; window and returns a handle on that window. 
+;; if <epsfile> is a string, the graph is written to
+;; this file in encapsulated format instead of being
+;; shown on the screen.
+;; {<pre>
+;;  (de toto (x) (* (exp (- (* x x))) (sin (* 6 x))))
+;;  ;; plot function toto between -4 and 4 in blue
+;;  (setq pwin (gplot-function toto -4 4 "asd"))
+;;  ;; close plotting window
+;;  (setq pwin ())
+;; </pre>}
+(de gplot-function (f xmin xmax &optional (title "Function Plot") epsfile)
+  (when (not gnuplotter) (libload "libplot/gnuplotter"))
+  (let ((gp (new gnuplotter))
+	(xstep (/ (- xmax xmin) 300)))
+    (when epsfile
+      (==> gp send "set terminal postscript eps 22")
+      (==> gp send (sprintf "set output \"%s\"" epsfile)))
+    (==> gp plot (range xmin xmax xstep) f title)
+    gp))
+
+
+#? (gplot-surface <function> <xmin> <xmax> <ymin> <ymax> [<title>]))
+;; Call GNUplot to plot the surface z=function(x,y).
+;; <function> must take two numerical arguments.
+;; The function is plotted in the interval
+;; [<xmin>,<xmax>],[<ymin>,<ymax>].
+;; This function returns a handle on the gnuplot
+;; object. The gnuplot window is destroyed when the 
+;; object is deallocated. Therefore the return value
+;; should be set to a variable if the window is to be
+;; kept open. Example:
+;; {<pre>
+;;  (de toto (x y) (* (exp (- (* x x))) (sin y)))
+;;  (setq gp (plot-surface toto -3 3 -6 6))
+;;  ;; close gnuplot window
+;;  (setq gp ())
+;; </pre>}
+(de gplot-surface (f xmin xmax ymin ymax &optional (title "Surface Plot") epsfile)
+  (when (not gnuplotter) (libload "libplot/gnuplotter"))
+  (let ((gp (new gnuplotter))
+	(xstep (/ (- xmax xmin) 30))
+	(ystep (/ (- ymax ymin) 30)))
+    (when epsfile
+      (==> gp send "set terminal postscript eps 22")
+      (==> gp send (sprintf "set output \"%s\"" epsfile)))
+    (==> gp plot3d (range xmin xmax xstep) (range ymin ymax ystep) f title)
+    gp))
+

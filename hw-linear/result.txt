@@ -1,0 +1,743 @@
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.1"
+*** Linear regression eta=0.1 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.20, error=0.60  TEST : loss=  1.22, error=0.61
+convergence detected at loop 272
+TRAIN: loss=107.67, error=0.18  TEST : loss=147.95, error=0.18
+convergence detected at loop 227
+TRAIN: loss= 96.90, error=0.15  TEST : loss= 78.63, error=0.16
+convergence detected at loop 146
+TRAIN: loss=207.60, error=0.12  TEST : loss=190.76, error=0.12
+convergence detected at loop 74
+TRAIN: loss=178.68, error=0.12  TEST : loss=190.63, error=0.12
+convergence detected at loop 173
+TRAIN: loss= 61.97, error=0.14  TEST : loss= 58.57, error=0.15
+convergence detected at loop 332
+TRAIN: loss=101.26, error=0.23  TEST : loss= 85.23, error=0.21
+convergence detected at loop 529
+TRAIN: loss=161.40, error=0.16  TEST : loss=129.12, error=0.16
+convergence detected at loop 381
+TRAIN: loss=193.90, error=0.10  TEST : loss=184.06, error=0.11
+convergence detected at loop 522
+TRAIN: loss=211.09, error=0.10  TEST : loss=188.90, error=0.10
+convergence detected at loop 73
+TRAIN: loss=140.84, error=0.09  TEST : loss=138.28, error=0.10
+convergence detected at loop 339
+TRAIN: loss=157.61, error=0.10  TEST : loss=162.66, error=0.13
+convergence detected at loop 201
+TRAIN: loss=178.73, error=0.11  TEST : loss=176.40, error=0.12
+convergence detected at loop 121
+TRAIN: loss=144.47, error=0.11  TEST : loss=132.74, error=0.12
+convergence detected at loop 190
+TRAIN: loss=146.13, error=0.10  TEST : loss=109.72, error=0.12
+convergence detected at loop 156
+TRAIN: loss=148.07, error=0.11  TEST : loss=114.32, error=0.11
+convergence detected at loop 217
+TRAIN: loss= 73.68, error=0.15  TEST : loss= 74.15, error=0.15
+convergence detected at loop 60
+TRAIN: loss=168.94, error=0.10  TEST : loss=173.72, error=0.12
+convergence detected at loop 135
+TRAIN: loss= 74.61, error=0.13  TEST : loss= 99.65, error=0.13
+convergence detected at loop 500
+TRAIN: loss=203.43, error=0.09  TEST : loss=211.58, error=0.08
+convergence detected at loop 664
+TRAIN: loss= 83.85, error=0.11  TEST : loss= 79.42, error=0.15
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+
+
+==============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.2"
+*** Linear regression eta=0.2 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.19, error=0.60  TEST : loss=  1.26, error=0.63
+convergence detected at loop 315
+TRAIN: loss=582.67, error=0.13  TEST : loss=519.53, error=0.13
+convergence detected at loop 126
+TRAIN: loss=756.45, error=0.09  TEST : loss=639.26, error=0.10
+convergence detected at loop 230
+TRAIN: loss=374.99, error=0.21  TEST : loss=348.87, error=0.20
+convergence detected at loop 175
+TRAIN: loss=489.33, error=0.14  TEST : loss=623.73, error=0.16
+convergence detected at loop 94
+TRAIN: loss=587.85, error=0.13  TEST : loss=726.04, error=0.15
+convergence detected at loop 457
+TRAIN: loss=496.03, error=0.10  TEST : loss=469.81, error=0.10
+convergence detected at loop 357
+TRAIN: loss=514.84, error=0.10  TEST : loss=539.68, error=0.08
+convergence detected at loop 167
+TRAIN: loss=545.70, error=0.11  TEST : loss=600.20, error=0.13
+convergence detected at loop 332
+TRAIN: loss=404.28, error=0.10  TEST : loss=416.46, error=0.14
+convergence detected at loop 394
+TRAIN: loss=504.09, error=0.15  TEST : loss=377.24, error=0.16
+convergence detected at loop 417
+TRAIN: loss=606.30, error=0.18  TEST : loss=495.84, error=0.20
+convergence detected at loop 283
+TRAIN: loss=719.64, error=0.13  TEST : loss=573.75, error=0.13
+convergence detected at loop 166
+TRAIN: loss=448.27, error=0.10  TEST : loss=543.22, error=0.10
+convergence detected at loop 40
+TRAIN: loss=493.07, error=0.13  TEST : loss=511.94, error=0.13
+convergence detected at loop 324
+TRAIN: loss=361.25, error=0.11  TEST : loss=470.78, error=0.11
+convergence detected at loop 796
+TRAIN: loss=473.99, error=0.09  TEST : loss=523.97, error=0.10
+convergence detected at loop 73
+TRAIN: loss=895.52, error=0.09  TEST : loss=925.26, error=0.09
+convergence detected at loop 207
+TRAIN: loss=560.69, error=0.10  TEST : loss=435.35, error=0.11
+convergence detected at loop 521
+TRAIN: loss=651.43, error=0.12  TEST : loss=523.05, error=0.14
+convergence detected at loop 295
+TRAIN: loss=679.59, error=0.14  TEST : loss=845.12, error=0.14
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+==============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.3"
+*** Linear regression eta=0.3 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.20, error=0.60  TEST : loss=  1.25, error=0.63
+convergence detected at loop 389
+TRAIN: loss=1786.71, error=0.09  TEST : loss=1923.54, error=0.11
+convergence detected at loop 135
+TRAIN: loss=2084.45, error=0.10  TEST : loss=1442.03, error=0.09
+convergence detected at loop 69
+TRAIN: loss=1052.86, error=0.10  TEST : loss=1094.74, error=0.09
+convergence detected at loop 605
+TRAIN: loss=1221.79, error=0.15  TEST : loss=1054.85, error=0.15
+convergence detected at loop 534
+TRAIN: loss=1343.16, error=0.12  TEST : loss=1440.66, error=0.14
+convergence detected at loop 89
+TRAIN: loss=1378.79, error=0.12  TEST : loss=1247.76, error=0.14
+convergence detected at loop 485
+TRAIN: loss=1428.69, error=0.12  TEST : loss=1483.07, error=0.10
+convergence detected at loop 153
+TRAIN: loss=1740.23, error=0.09  TEST : loss=1361.64, error=0.12
+convergence detected at loop 261
+TRAIN: loss=1120.77, error=0.10  TEST : loss=1076.14, error=0.10
+convergence detected at loop 348
+TRAIN: loss=1786.66, error=0.13  TEST : loss=1677.68, error=0.15
+convergence detected at loop 303
+TRAIN: loss=2025.88, error=0.12  TEST : loss=1059.24, error=0.12
+convergence detected at loop 204
+TRAIN: loss=1213.58, error=0.11  TEST : loss=1187.63, error=0.11
+convergence detected at loop 57
+TRAIN: loss=1174.81, error=0.10  TEST : loss=1140.35, error=0.08
+convergence detected at loop 232
+TRAIN: loss=1023.84, error=0.14  TEST : loss=1068.13, error=0.14
+convergence detected at loop 401
+TRAIN: loss=1363.82, error=0.11  TEST : loss=1240.00, error=0.11
+convergence detected at loop 386
+TRAIN: loss=907.43, error=0.12  TEST : loss=898.59, error=0.12
+convergence detected at loop 391
+TRAIN: loss=1601.60, error=0.11  TEST : loss=1016.45, error=0.11
+convergence detected at loop 342
+TRAIN: loss=1484.00, error=0.11  TEST : loss=1375.78, error=0.10
+convergence detected at loop 207
+TRAIN: loss=1156.19, error=0.11  TEST : loss=1029.67, error=0.12
+convergence detected at loop 24
+TRAIN: loss=932.97, error=0.15  TEST : loss=1002.10, error=0.15
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.5"
+*** Linear regression eta=0.5 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.20, error=0.60  TEST : loss=  1.22, error=0.61
+convergence detected at loop 193
+TRAIN: loss=5610.95, error=0.14  TEST : loss=5097.28, error=0.15
+convergence detected at loop 166
+TRAIN: loss=3231.40, error=0.16  TEST : loss=3248.58, error=0.15
+convergence detected at loop 293
+TRAIN: loss=3904.28, error=0.10  TEST : loss=3312.05, error=0.11
+convergence detected at loop 141
+TRAIN: loss=3232.84, error=0.10  TEST : loss=2462.95, error=0.11
+convergence detected at loop 206
+TRAIN: loss=2965.45, error=0.09  TEST : loss=3081.97, error=0.13
+convergence detected at loop 156
+TRAIN: loss=3984.66, error=0.10  TEST : loss=4508.08, error=0.10
+convergence detected at loop 370
+TRAIN: loss=3482.09, error=0.11  TEST : loss=3228.81, error=0.13
+convergence detected at loop 198
+TRAIN: loss=3583.49, error=0.12  TEST : loss=3133.92, error=0.12
+convergence detected at loop 326
+TRAIN: loss=3891.33, error=0.12  TEST : loss=3664.04, error=0.13
+convergence detected at loop 245
+TRAIN: loss=3296.06, error=0.14  TEST : loss=3917.53, error=0.15
+convergence detected at loop 123
+TRAIN: loss=4363.76, error=0.11  TEST : loss=3303.43, error=0.12
+convergence detected at loop 207
+TRAIN: loss=3543.05, error=0.13  TEST : loss=3723.41, error=0.16
+convergence detected at loop 213
+TRAIN: loss=3936.43, error=0.09  TEST : loss=4067.80, error=0.12
+convergence detected at loop 409
+TRAIN: loss=4451.22, error=0.14  TEST : loss=4493.73, error=0.13
+convergence detected at loop 291
+TRAIN: loss=3365.12, error=0.11  TEST : loss=3480.58, error=0.13
+convergence detected at loop 153
+TRAIN: loss=2825.65, error=0.13  TEST : loss=3450.45, error=0.12
+convergence detected at loop 134
+TRAIN: loss=2332.07, error=0.11  TEST : loss=2207.40, error=0.12
+convergence detected at loop 442
+TRAIN: loss=4316.23, error=0.14  TEST : loss=3886.54, error=0.14
+convergence detected at loop 253
+TRAIN: loss=2494.62, error=0.10  TEST : loss=3243.17, error=0.12
+convergence detected at loop 212
+TRAIN: loss=4408.41, error=0.10  TEST : loss=4416.82, error=0.10
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.6"
+*** Linear regression eta=0.6 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.21, error=0.61  TEST : loss=  1.21, error=0.60
+convergence detected at loop 332
+TRAIN: loss=5072.04, error=0.11  TEST : loss=4257.60, error=0.11
+convergence detected at loop 120
+TRAIN: loss=4002.32, error=0.11  TEST : loss=3733.18, error=0.10
+convergence detected at loop 280
+TRAIN: loss=8102.01, error=0.13  TEST : loss=9602.77, error=0.13
+convergence detected at loop 268
+TRAIN: loss=6807.79, error=0.11  TEST : loss=4982.56, error=0.10
+convergence detected at loop 402
+TRAIN: loss=4159.57, error=0.11  TEST : loss=5148.43, error=0.11
+convergence detected at loop 58
+TRAIN: loss=5728.13, error=0.14  TEST : loss=5557.20, error=0.15
+convergence detected at loop 198
+TRAIN: loss=7379.82, error=0.08  TEST : loss=6672.17, error=0.09
+convergence detected at loop 137
+TRAIN: loss=4083.96, error=0.12  TEST : loss=3269.71, error=0.14
+convergence detected at loop 362
+TRAIN: loss=7148.80, error=0.14  TEST : loss=6358.79, error=0.14
+convergence detected at loop 91
+TRAIN: loss=5297.85, error=0.13  TEST : loss=4646.69, error=0.14
+convergence detected at loop 92
+TRAIN: loss=4431.50, error=0.13  TEST : loss=4869.70, error=0.12
+convergence detected at loop 126
+TRAIN: loss=6784.09, error=0.13  TEST : loss=6785.72, error=0.14
+convergence detected at loop 247
+TRAIN: loss=6922.37, error=0.10  TEST : loss=7255.33, error=0.11
+convergence detected at loop 332
+TRAIN: loss=4969.65, error=0.10  TEST : loss=5850.65, error=0.11
+convergence detected at loop 91
+TRAIN: loss=6170.75, error=0.12  TEST : loss=5681.39, error=0.12
+convergence detected at loop 151
+TRAIN: loss=5004.34, error=0.14  TEST : loss=5503.96, error=0.15
+convergence detected at loop 127
+TRAIN: loss=6270.75, error=0.10  TEST : loss=4888.50, error=0.11
+convergence detected at loop 621
+TRAIN: loss=7048.72, error=0.11  TEST : loss=6563.28, error=0.13
+convergence detected at loop 522
+TRAIN: loss=4567.38, error=0.11  TEST : loss=4450.57, error=0.11
+convergence detected at loop 39
+TRAIN: loss=7718.45, error=0.13  TEST : loss=6124.37, error=0.14
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.7"
+*** Linear regression eta=0.7 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.22, error=0.61  TEST : loss=  1.21, error=0.61
+convergence detected at loop 103
+TRAIN: loss=4263.71, error=0.11  TEST : loss=3296.64, error=0.14
+convergence detected at loop 249
+TRAIN: loss=6406.49, error=0.11  TEST : loss=6706.54, error=0.12
+convergence detected at loop 371
+TRAIN: loss=5656.53, error=0.18  TEST : loss=6425.62, error=0.17
+convergence detected at loop 199
+TRAIN: loss=9523.82, error=0.10  TEST : loss=8029.86, error=0.11
+convergence detected at loop 217
+TRAIN: loss=4783.78, error=0.13  TEST : loss=4792.23, error=0.13
+convergence detected at loop 264
+TRAIN: loss=10346.72, error=0.12  TEST : loss=10247.62, error=0.10
+convergence detected at loop 176
+TRAIN: loss=8135.80, error=0.14  TEST : loss=7165.51, error=0.16
+convergence detected at loop 134
+TRAIN: loss=9187.09, error=0.13  TEST : loss=8690.52, error=0.13
+convergence detected at loop 197
+TRAIN: loss=6543.24, error=0.11  TEST : loss=6236.99, error=0.12
+convergence detected at loop 214
+TRAIN: loss=6209.72, error=0.12  TEST : loss=6892.01, error=0.14
+convergence detected at loop 425
+TRAIN: loss=6074.41, error=0.13  TEST : loss=5457.83, error=0.15
+convergence detected at loop 554
+TRAIN: loss=7899.12, error=0.11  TEST : loss=9084.38, error=0.11
+convergence detected at loop 312
+TRAIN: loss=10921.77, error=0.11  TEST : loss=12013.95, error=0.13
+convergence detected at loop 97
+TRAIN: loss=6631.25, error=0.10  TEST : loss=6291.96, error=0.12
+convergence detected at loop 424
+TRAIN: loss=5078.98, error=0.10  TEST : loss=4843.36, error=0.11
+convergence detected at loop 440
+TRAIN: loss=9323.57, error=0.15  TEST : loss=9962.47, error=0.16
+convergence detected at loop 140
+TRAIN: loss=8448.22, error=0.12  TEST : loss=10006.56, error=0.11
+convergence detected at loop 129
+TRAIN: loss=7100.23, error=0.13  TEST : loss=5850.82, error=0.13
+convergence detected at loop 411
+TRAIN: loss=5782.96, error=0.16  TEST : loss=6822.08, error=0.15
+convergence detected at loop 372
+TRAIN: loss=8538.82, error=0.12  TEST : loss=8512.63, error=0.14
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.8"
+*** Linear regression eta=0.8 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.22, error=0.61  TEST : loss=  1.22, error=0.61
+convergence detected at loop 80
+TRAIN: loss=14056.08, error=0.15  TEST : loss=18397.16, error=0.14
+convergence detected at loop 158
+TRAIN: loss=9116.00, error=0.15  TEST : loss=7158.69, error=0.15
+convergence detected at loop 135
+TRAIN: loss=8357.06, error=0.12  TEST : loss=8811.68, error=0.12
+convergence detected at loop 95
+TRAIN: loss=12704.91, error=0.10  TEST : loss=13090.18, error=0.11
+convergence detected at loop 154
+TRAIN: loss=7867.80, error=0.11  TEST : loss=7129.88, error=0.13
+convergence detected at loop 317
+TRAIN: loss=11596.67, error=0.11  TEST : loss=11165.78, error=0.10
+convergence detected at loop 210
+TRAIN: loss=11519.28, error=0.11  TEST : loss=12266.81, error=0.12
+convergence detected at loop 143
+TRAIN: loss=9188.00, error=0.12  TEST : loss=9058.01, error=0.12
+convergence detected at loop 85
+TRAIN: loss=10458.33, error=0.09  TEST : loss=9018.50, error=0.10
+convergence detected at loop 76
+TRAIN: loss=8753.95, error=0.11  TEST : loss=8478.84, error=0.12
+convergence detected at loop 42
+TRAIN: loss=11873.51, error=0.09  TEST : loss=13392.41, error=0.10
+convergence detected at loop 319
+TRAIN: loss=10985.15, error=0.11  TEST : loss=9361.25, error=0.10
+convergence detected at loop 340
+TRAIN: loss=7957.12, error=0.14  TEST : loss=8323.84, error=0.14
+convergence detected at loop 484
+TRAIN: loss=5669.46, error=0.20  TEST : loss=5448.40, error=0.19
+convergence detected at loop 150
+TRAIN: loss=7228.65, error=0.10  TEST : loss=8828.64, error=0.09
+convergence detected at loop 163
+TRAIN: loss=11839.28, error=0.10  TEST : loss=10553.91, error=0.10
+convergence detected at loop 205
+TRAIN: loss=9809.12, error=0.15  TEST : loss=7602.03, error=0.15
+convergence detected at loop 244
+TRAIN: loss=11523.19, error=0.10  TEST : loss=10276.03, error=0.10
+convergence detected at loop 480
+TRAIN: loss=6624.95, error=0.13  TEST : loss=6336.80, error=0.12
+convergence detected at loop 180
+TRAIN: loss=9276.18, error=0.10  TEST : loss=9084.00, error=0.10
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 0.9"
+*** Linear regression eta=0.9 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.23, error=0.61  TEST : loss=  1.18, error=0.59
+convergence detected at loop 315
+TRAIN: loss=13097.10, error=0.10  TEST : loss=13959.72, error=0.08
+convergence detected at loop 271
+TRAIN: loss=23345.28, error=0.18  TEST : loss=20752.68, error=0.18
+convergence detected at loop 671
+TRAIN: loss=15823.79, error=0.10  TEST : loss=10766.41, error=0.11
+convergence detected at loop 154
+TRAIN: loss=13720.03, error=0.13  TEST : loss=13217.81, error=0.11
+convergence detected at loop 231
+TRAIN: loss=8112.97, error=0.11  TEST : loss=8905.49, error=0.10
+convergence detected at loop 430
+TRAIN: loss=17636.23, error=0.13  TEST : loss=17268.41, error=0.12
+convergence detected at loop 418
+TRAIN: loss=11734.40, error=0.12  TEST : loss=14384.28, error=0.09
+convergence detected at loop 125
+TRAIN: loss=12480.67, error=0.12  TEST : loss=11559.52, error=0.13
+convergence detected at loop 225
+TRAIN: loss=23543.72, error=0.11  TEST : loss=18490.24, error=0.14
+convergence detected at loop 282
+TRAIN: loss=14864.28, error=0.12  TEST : loss=16849.03, error=0.15
+convergence detected at loop 566
+TRAIN: loss=15661.30, error=0.11  TEST : loss=14880.61, error=0.09
+convergence detected at loop 516
+TRAIN: loss=9497.43, error=0.23  TEST : loss=7291.45, error=0.26
+convergence detected at loop 134
+TRAIN: loss=17199.46, error=0.10  TEST : loss=11445.19, error=0.08
+convergence detected at loop 233
+TRAIN: loss=11994.35, error=0.12  TEST : loss=10621.60, error=0.12
+convergence detected at loop 353
+TRAIN: loss=8660.32, error=0.13  TEST : loss=8357.83, error=0.16
+convergence detected at loop 569
+TRAIN: loss=14286.13, error=0.10  TEST : loss=15026.96, error=0.11
+convergence detected at loop 303
+TRAIN: loss=14911.65, error=0.12  TEST : loss=14199.17, error=0.12
+convergence detected at loop 108
+TRAIN: loss=12615.17, error=0.10  TEST : loss=9904.96, error=0.13
+convergence detected at loop 418
+TRAIN: loss=5116.22, error=0.15  TEST : loss=3930.09, error=0.15
+convergence detected at loop 389
+TRAIN: loss=6339.03, error=0.10  TEST : loss=6993.67, error=0.12
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 2.0"
+*** Linear regression eta=2 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.23, error=0.62  TEST : loss=  1.19, error=0.59
+convergence detected at loop 249
+TRAIN: loss=51462.32, error=0.16  TEST : loss=49933.92, error=0.20
+convergence detected at loop 607
+TRAIN: loss=48653.07, error=0.10  TEST : loss=38701.13, error=0.12
+convergence detected at loop 127
+TRAIN: loss=67250.61, error=0.12  TEST : loss=65419.92, error=0.14
+convergence detected at loop 271
+TRAIN: loss=63418.09, error=0.11  TEST : loss=65558.65, error=0.10
+convergence detected at loop 148
+TRAIN: loss=84953.43, error=0.12  TEST : loss=83012.80, error=0.12
+convergence detected at loop 208
+TRAIN: loss=69735.60, error=0.16  TEST : loss=70133.02, error=0.15
+convergence detected at loop 143
+TRAIN: loss=50714.77, error=0.10  TEST : loss=52533.60, error=0.10
+convergence detected at loop 257
+TRAIN: loss=61807.72, error=0.09  TEST : loss=73569.74, error=0.09
+convergence detected at loop 202
+TRAIN: loss=83242.59, error=0.16  TEST : loss=55354.49, error=0.15
+convergence detected at loop 389
+TRAIN: loss=64993.84, error=0.10  TEST : loss=58096.64, error=0.13
+convergence detected at loop 252
+TRAIN: loss=75137.66, error=0.11  TEST : loss=59665.81, error=0.12
+convergence detected at loop 329
+TRAIN: loss=67681.55, error=0.13  TEST : loss=53245.28, error=0.15
+convergence detected at loop 302
+TRAIN: loss=64048.35, error=0.13  TEST : loss=54287.16, error=0.14
+convergence detected at loop 22
+TRAIN: loss=65816.85, error=0.09  TEST : loss=70077.53, error=0.10
+convergence detected at loop 289
+TRAIN: loss=48673.73, error=0.16  TEST : loss=43652.67, error=0.16
+convergence detected at loop 75
+TRAIN: loss=52795.96, error=0.13  TEST : loss=49133.57, error=0.12
+convergence detected at loop 52
+TRAIN: loss=57406.60, error=0.13  TEST : loss=76188.21, error=0.14
+convergence detected at loop 103
+TRAIN: loss=36776.69, error=0.14  TEST : loss=31843.17, error=0.14
+convergence detected at loop 131
+TRAIN: loss=68692.23, error=0.10  TEST : loss=58341.97, error=0.13
+convergence detected at loop 327
+TRAIN: loss=58048.54, error=0.13  TEST : loss=47671.06, error=0.14
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 2.0"
+*** Linear regression eta=10 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.22, error=0.61  TEST : loss=  1.18, error=0.59
+convergence detected at loop 629
+TRAIN: loss=972658.87, error=0.10  TEST : loss=957778.51, error=0.12
+convergence detected at loop 134
+TRAIN: loss=2019948.24, error=0.11  TEST : loss=1518438.90, error=0.13
+convergence detected at loop 115
+TRAIN: loss=1984551.15, error=0.11  TEST : loss=1979397.28, error=0.10
+convergence detected at loop 102
+TRAIN: loss=1605093.69, error=0.09  TEST : loss=1533370.75, error=0.09
+convergence detected at loop 181
+TRAIN: loss=1723819.70, error=0.13  TEST : loss=1711488.99, error=0.13
+convergence detected at loop 324
+TRAIN: loss=1740014.68, error=0.17  TEST : loss=2035154.26, error=0.18
+convergence detected at loop 171
+TRAIN: loss=2232707.01, error=0.09  TEST : loss=1868530.53, error=0.10
+convergence detected at loop 270
+TRAIN: loss=1608632.56, error=0.12  TEST : loss=1887904.42, error=0.11
+convergence detected at loop 458
+TRAIN: loss=935760.35, error=0.13  TEST : loss=956168.08, error=0.12
+convergence detected at loop 137
+TRAIN: loss=1481851.66, error=0.13  TEST : loss=1324977.95, error=0.14
+convergence detected at loop 157
+TRAIN: loss=1214238.31, error=0.11  TEST : loss=1229595.22, error=0.11
+convergence detected at loop 306
+TRAIN: loss=1588486.74, error=0.11  TEST : loss=1443517.97, error=0.13
+convergence detected at loop 49
+TRAIN: loss=1252676.14, error=0.16  TEST : loss=1191217.63, error=0.15
+convergence detected at loop 40
+TRAIN: loss=1476447.24, error=0.12  TEST : loss=1453672.21, error=0.13
+convergence detected at loop 106
+TRAIN: loss=1597234.67, error=0.10  TEST : loss=1931246.68, error=0.11
+convergence detected at loop 45
+TRAIN: loss=1685158.34, error=0.13  TEST : loss=1266881.34, error=0.14
+convergence detected at loop 312
+TRAIN: loss=1737430.44, error=0.10  TEST : loss=1373369.64, error=0.13
+convergence detected at loop 225
+TRAIN: loss=1251839.37, error=0.12  TEST : loss=1049026.61, error=0.13
+convergence detected at loop 187
+TRAIN: loss=2364219.86, error=0.10  TEST : loss=2057370.42, error=0.12
+convergence detected at loop 168
+TRAIN: loss=816626.37, error=0.11  TEST : loss=856885.54, error=0.14
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 2.0"
+*** Linear regression eta=20 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.22, error=0.61  TEST : loss=  1.23, error=0.62
+convergence detected at loop 373
+TRAIN: loss=5496053.90, error=0.18  TEST : loss=4873928.73, error=0.16
+convergence detected at loop 441
+TRAIN: loss=5772536.13, error=0.13  TEST : loss=4526100.59, error=0.13
+convergence detected at loop 275
+TRAIN: loss=5438332.98, error=0.10  TEST : loss=5490805.93, error=0.11
+convergence detected at loop 554
+TRAIN: loss=4685551.47, error=0.13  TEST : loss=3956335.34, error=0.12
+convergence detected at loop 373
+TRAIN: loss=3856332.36, error=0.15  TEST : loss=3418055.63, error=0.15
+convergence detected at loop 131
+TRAIN: loss=5427087.73, error=0.12  TEST : loss=5328262.07, error=0.12
+convergence detected at loop 329
+TRAIN: loss=5246433.21, error=0.13  TEST : loss=4340957.35, error=0.13
+convergence detected at loop 652
+TRAIN: loss=5033516.03, error=0.10  TEST : loss=4907519.62, error=0.10
+convergence detected at loop 105
+TRAIN: loss=6478819.59, error=0.10  TEST : loss=5595995.84, error=0.08
+convergence detected at loop 135
+TRAIN: loss=7580864.14, error=0.12  TEST : loss=6838784.72, error=0.13
+convergence detected at loop 390
+TRAIN: loss=8237435.48, error=0.11  TEST : loss=7752503.51, error=0.10
+convergence detected at loop 180
+TRAIN: loss=6135645.72, error=0.13  TEST : loss=5766507.00, error=0.11
+convergence detected at loop 76
+TRAIN: loss=5231475.33, error=0.11  TEST : loss=5272852.15, error=0.14
+convergence detected at loop 65
+TRAIN: loss=4502175.25, error=0.14  TEST : loss=2949286.76, error=0.18
+convergence detected at loop 610
+TRAIN: loss=7079615.54, error=0.09  TEST : loss=8733455.49, error=0.12
+convergence detected at loop 533
+TRAIN: loss=6531847.58, error=0.10  TEST : loss=6093177.58, error=0.12
+convergence detected at loop 311
+TRAIN: loss=3899843.64, error=0.12  TEST : loss=3374553.68, error=0.11
+convergence detected at loop 291
+TRAIN: loss=4061763.28, error=0.10  TEST : loss=3824170.86, error=0.12
+convergence detected at loop 470
+TRAIN: loss=3811823.78, error=0.13  TEST : loss=3394696.86, error=0.15
+convergence detected at loop 647
+TRAIN: loss=6221382.15, error=0.11  TEST : loss=7219317.07, error=0.10
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 2.0"
+*** Linear regression eta=16 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.22, error=0.61  TEST : loss=  1.17, error=0.59
+convergence detected at loop 215
+TRAIN: loss=3877546.07, error=0.12  TEST : loss=3526829.00, error=0.14
+convergence detected at loop 302
+TRAIN: loss=2911585.45, error=0.11  TEST : loss=3388140.36, error=0.09
+convergence detected at loop 25
+TRAIN: loss=3312027.07, error=0.11  TEST : loss=2757848.15, error=0.11
+convergence detected at loop 140
+TRAIN: loss=4467785.57, error=0.09  TEST : loss=4998138.25, error=0.11
+convergence detected at loop 302
+TRAIN: loss=3733847.99, error=0.12  TEST : loss=2533419.80, error=0.14
+convergence detected at loop 301
+TRAIN: loss=3512306.11, error=0.13  TEST : loss=3082815.94, error=0.14
+convergence detected at loop 294
+TRAIN: loss=2662652.70, error=0.15  TEST : loss=2861732.84, error=0.15
+convergence detected at loop 48
+TRAIN: loss=3102463.22, error=0.12  TEST : loss=2748480.85, error=0.14
+convergence detected at loop 635
+TRAIN: loss=2827173.47, error=0.11  TEST : loss=2791916.04, error=0.10
+convergence detected at loop 485
+TRAIN: loss=4082425.63, error=0.12  TEST : loss=4152544.92, error=0.12
+convergence detected at loop 74
+TRAIN: loss=3907699.24, error=0.13  TEST : loss=4160805.62, error=0.15
+convergence detected at loop 371
+TRAIN: loss=3384180.09, error=0.10  TEST : loss=3356589.69, error=0.10
+convergence detected at loop 101
+TRAIN: loss=3530174.71, error=0.17  TEST : loss=2981548.74, error=0.19
+convergence detected at loop 70
+TRAIN: loss=2633868.28, error=0.10  TEST : loss=2486429.30, error=0.12
+convergence detected at loop 43
+TRAIN: loss=4218874.28, error=0.10  TEST : loss=3480165.56, error=0.12
+convergence detected at loop 65
+TRAIN: loss=4203609.24, error=0.14  TEST : loss=3280523.96, error=0.16
+convergence detected at loop 252
+TRAIN: loss=4048158.92, error=0.09  TEST : loss=3804024.41, error=0.08
+convergence detected at loop 49
+TRAIN: loss=3599504.55, error=0.12  TEST : loss=2924572.11, error=0.11
+convergence detected at loop 148
+TRAIN: loss=4132684.30, error=0.10  TEST : loss=4781979.88, error=0.11
+convergence detected at loop 291
+TRAIN: loss=3741615.14, error=0.11  TEST : loss=3051584.34, error=0.13
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 2.0"
+*** Linear regression eta=64 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.24, error=0.62  TEST : loss=  1.17, error=0.58
+convergence detected at loop 141
+TRAIN: loss=58158501.00, error=0.17  TEST : loss=42649230.62, error=0.16
+convergence detected at loop 429
+TRAIN: loss=58591147.84, error=0.14  TEST : loss=59016962.37, error=0.18
+convergence detected at loop 282
+TRAIN: loss=74642802.54, error=0.12  TEST : loss=70944467.01, error=0.12
+convergence detected at loop 252
+TRAIN: loss=75228925.01, error=0.11  TEST : loss=64710679.70, error=0.11
+convergence detected at loop 90
+TRAIN: loss=50121062.88, error=0.11  TEST : loss=41112467.44, error=0.09
+convergence detected at loop 677
+TRAIN: loss=78309664.97, error=0.10  TEST : loss=71810469.73, error=0.12
+convergence detected at loop 167
+TRAIN: loss=67526517.26, error=0.17  TEST : loss=67928461.89, error=0.17
+convergence detected at loop 133
+TRAIN: loss=57419073.79, error=0.11  TEST : loss=50519664.74, error=0.11
+convergence detected at loop 616
+TRAIN: loss=43140680.23, error=0.09  TEST : loss=46318106.77, error=0.11
+convergence detected at loop 162
+TRAIN: loss=45671685.15, error=0.12  TEST : loss=44396859.01, error=0.12
+convergence detected at loop 411
+TRAIN: loss=49163750.18, error=0.10  TEST : loss=46406136.06, error=0.11
+convergence detected at loop 222
+TRAIN: loss=47822419.61, error=0.10  TEST : loss=52260982.92, error=0.11
+convergence detected at loop 431
+TRAIN: loss=88560838.30, error=0.13  TEST : loss=61446928.52, error=0.12
+convergence detected at loop 269
+TRAIN: loss=72694176.42, error=0.13  TEST : loss=77250065.94, error=0.15
+convergence detected at loop 103
+TRAIN: loss=70552908.61, error=0.13  TEST : loss=68313363.95, error=0.13
+convergence detected at loop 444
+TRAIN: loss=58021826.75, error=0.14  TEST : loss=50594883.19, error=0.14
+convergence detected at loop 448
+TRAIN: loss=56907639.36, error=0.12  TEST : loss=47290592.53, error=0.14
+convergence detected at loop 34
+TRAIN: loss=81722127.19, error=0.08  TEST : loss=65166884.93, error=0.11
+convergence detected at loop 323
+TRAIN: loss=48139602.45, error=0.15  TEST : loss=44930436.56, error=0.17
+convergence detected at loop 123
+TRAIN: loss=73955721.07, error=0.11  TEST : loss=89148806.17, error=0.12
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?
+============================================================
+reading UCI Spambase dataset
+normalizing variables to zero mean and unit variance
+total number of samples: 4601
+number of input variables: 57
+"Training using 3000 samples, eta = 2.0"
+*** Linear regression eta=128 decay=0
+    training set size:3000
+    test set size    :1000
+    input dimension  :57
+    0: TRAIN: loss=  1.22, error=0.61  TEST : loss=  1.21, error=0.61
+convergence detected at loop 320
+TRAIN: loss=234001981.71, error=0.12  TEST : loss=240029553.79, error=0.14
+convergence detected at loop 217
+TRAIN: loss=149134599.04, error=0.12  TEST : loss=160215960.32, error=0.12
+convergence detected at loop 204
+TRAIN: loss=325729249.16, error=0.13  TEST : loss=266162422.63, error=0.11
+convergence detected at loop 188
+TRAIN: loss=307512068.71, error=0.11  TEST : loss=309248998.38, error=0.12
+convergence detected at loop 336
+TRAIN: loss=258268057.95, error=0.12  TEST : loss=233516216.98, error=0.14
+convergence detected at loop 303
+TRAIN: loss=135689121.27, error=0.13  TEST : loss=104010314.13, error=0.11
+convergence detected at loop 137
+TRAIN: loss=177965718.82, error=0.15  TEST : loss=143176363.45, error=0.16
+convergence detected at loop 154
+TRAIN: loss=333776818.14, error=0.14  TEST : loss=329614701.66, error=0.13
+convergence detected at loop 155
+TRAIN: loss=363328061.32, error=0.10  TEST : loss=399341833.52, error=0.10
+convergence detected at loop 452
+TRAIN: loss=369638162.90, error=0.11  TEST : loss=378659948.66, error=0.14
+convergence detected at loop 113
+TRAIN: loss=335061283.22, error=0.09  TEST : loss=307214919.15, error=0.10
+convergence detected at loop 921
+TRAIN: loss=229107090.52, error=0.12  TEST : loss=235472877.28, error=0.11
+convergence detected at loop 132
+TRAIN: loss=167408572.50, error=0.14  TEST : loss=179913829.37, error=0.12
+convergence detected at loop 100
+TRAIN: loss=240314377.80, error=0.09  TEST : loss=208430147.00, error=0.10
+convergence detected at loop 89
+TRAIN: loss=325297392.13, error=0.09  TEST : loss=295401864.05, error=0.10
+convergence detected at loop 112
+TRAIN: loss=241017307.81, error=0.11  TEST : loss=246228947.70, error=0.12
+convergence detected at loop 617
+TRAIN: loss=442844460.44, error=0.09  TEST : loss=383356844.72, error=0.09
+convergence detected at loop 222
+TRAIN: loss=129254497.98, error=0.17  TEST : loss=107669922.95, error=0.17
+convergence detected at loop 244
+TRAIN: loss=164936809.89, error=0.11  TEST : loss=180232288.84, error=0.11
+convergence detected at loop 91
+TRAIN: loss=183413171.26, error=0.12  TEST : loss=161140184.43, error=0.14
+= "/home/han/work/nyu/ml-2010/hw-linear/main.lsh"
+?

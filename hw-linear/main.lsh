@@ -1,0 +1,219 @@
+
+(libload "dataset")
+
+(if (filep "linear-classifier-soluce.lsh")
+    (libload "linear-classifier-soluce")
+  (libload "linear-classifier"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; compute and print errors on training set and test set.
+;; argument i is the number of training epochs so far.
+(de print-results (i)
+  (printf "%5d: " (* 1 i))
+  (let ((all_result '()))
+  ;; z is a global variable set in run-perceptron
+  (let ((res (==> z test :data:inputs-train :data:outputs-train)))
+    (printf "TRAIN: loss=%6.2f, error=%4.2f  " (car res) (cadr res))
+    (setq all_result (append res)))
+  (let ((res (==> z test :data:inputs-test :data:outputs-test)))
+    (printf "TEST : loss=%6.2f, error=%4.2f  " (car res) (cadr res))
+    (setq all_result (append all_result res))    )
+  (printf "\n")all_result
+  ))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(de run-perceptron (n)
+  (printf "*** Perceptron\n")
+  (printf "    training set size:%d\n" (==> data size-training))
+  (printf "    test set size    :%d\n" (==> data size-testing))
+  (printf "    input dimension  :%d\n" (==> data nvariables))
+
+
+  (setq z (new perceptron (==> data nvariables)))
+
+  ;;this is not good, the training is happening in print-result)
+  (print-results 0) ;; commented out just to see how train-stochastic behave
+  (let ((train_error 0.0) (train_loss 0.0) (test_error 0.0) (test_loss 0.0))
+    (for (i 1 n)
+       (==> z train-stochastic 1 :data:inputs-train :data:outputs-train)
+       (let ((all_result (print-results i)))
+         (incr train_loss (car all_result))
+         (incr train_error (car (cdr all_result)))
+         (incr test_loss (car (cdr (cdr all_result))))
+         (incr test_error (car (cdr (cdr (cdr all_result)))))
+             ))
+    (printf "Average Train Loss :%6.2f\n" (/ train_loss n))
+    (printf "Average Train Error :%4.2f\n" (/ train_error n))
+    (printf "Average Test  Loss :%6.2f\n" (/ test_loss n))
+    (printf "Average Test  Error :%4.2f\n" (/ test_error n))
+    )
+  )
+
+
+(de run-linear-reg (n eta decay)
+  (printf "*** Linear regression eta=%g decay=%g\n" eta decay)
+  (printf "    training set size:%d\n" (==> data size-training))
+  (printf "    test set size    :%d\n" (==> data size-testing))
+  (printf "    input dimension  :%d\n" (==> data nvariables))
+  (setq z (new linear-reg (==> data nvariables)))
+  (print-results 0)
+  (let ((train_error 0.0) (train_loss 0.0) (test_error 0.0) (test_loss 0.0) (convergence 0.0))
+    (for (i 1 n)
+      (setq z (new linear-reg (==> data nvariables)))
+       (==> data shuffle)
+       (incr convergence (==> z train-stochastic 1 :data:inputs-train :data:outputs-train eta decay))
+       (let ((all_result (print-results i)))
+         (incr train_loss (car all_result))
+         (incr train_error (car (cdr all_result)))
+         (incr test_loss (car (cdr (cdr all_result))))
+         (incr test_error (car (cdr (cdr (cdr all_result)))))))
+       ;; (let ((res (==> z test :data:inputs-train :data:outputs-train)))
+       ;;   (printf "TRAIN: loss=%6.2f, error=%4.2f  " (car res) (cadr res)))
+       ;; (let ((res (==> z test :data:inputs-test :data:outputs-test)))
+       ;;   (printf "TEST : loss=%6.2f, error=%4.2f  " (car res) (cadr res))))
+    (printf "Average Train Loss :%6.2f\n" (/ train_loss n))
+    (printf "Average Train Error :%4.2f\n" (/ train_error n))
+    (printf "Average Test  Loss :%6.2f\n" (/ test_loss n))
+    (printf "Average Test  Error :%4.2f\n" (/ test_error n))
+    (printf "Average Convergence counter :%4.2f\n" (/ convergence n))
+    (printf "|    %d          | %d         |  %6.2f         |  %4.2f            |  %6.2f        |  %4.2f          |   %d      |  %4.2f  |  %5.0f\n" (==> data size-training) (==> data size-testing) (/ train_loss n) (/ train_error n) (/ test_loss n) (/ test_error n) n eta (/ convergence n))
+    (printf "---------------------------------------------------------------------------------------------------------------------------------------------------------\n")))
+
+(de run-mse-solve (decay)
+  (printf "*** MSE direct solution decay=%g\n" decay)
+  (printf "    training set size:%d\n" (==> data size-training))
+  (printf "    test set size    :%d\n" (==> data size-testing))
+  (printf "    input dimension  :%d\n" (==> data nvariables))
+  (setq z (new linear-reg (==> data nvariables)))
+  (print-results 0)
+  (==> z mse-solve :data:inputs-train :data:outputs-train decay)
+  (printf "MSE direct solution: weights after training\n")
+  (print :z:weights)
+  (print-results 1))
+
+(de run-logistic-reg (n eta decay)
+  (printf "*** Logistic regression eta=%g decay=%g\n" eta decay)
+  (printf "    training set size:%d\n" (==> data size-training))
+  (printf "    test set size    :%d\n" (==> data size-testing))
+  (printf "    input dimension  :%d\n" (==> data nvariables))
+  (setq z (new logistic-reg (==> data nvariables)))
+  (print-results 0)
+  (let ((train_error 0.0) (train_loss 0.0) (test_error 0.0) (test_loss 0.0) (convergence 0.0))
+    (for (i 1 n)
+      (setq z (new logistic-reg (==> data nvariables)))
+       ;; (==> data shuffle)
+       (incr convergence (==> z train-stochastic 1 :data:inputs-train :data:outputs-train eta decay))
+       (let ((all_result (print-results i)))
+         (incr train_loss (car all_result))
+         (incr train_error (car (cdr all_result)))
+         (incr test_loss (car (cdr (cdr all_result))))
+         (incr test_error (car (cdr (cdr (cdr all_result)))))))
+    (printf "Average Train Loss :%6.2f\n" (/ train_loss n))
+    (printf "Average Train Error :%4.2f\n" (/ train_error n))
+    (printf "Average Test  Loss :%6.2f\n" (/ test_loss n))
+    (printf "Average Test  Error :%4.2f\n" (/ test_error n))
+    (printf "Average Convergence counter :%4.2f\n" (/ convergence n))
+    (printf "|    %d          | %d         |  %6.2f         |  %4.2f            |  %6.2f        |  %4.2f          |   %d      |  %4.2f  |  %5.0f\n" (==> data size-training) (==> data size-testing) (/ train_loss n) (/ train_error n) (/ test_loss n) (/ test_error n) n eta (/ convergence n))
+    (printf "---------------------------------------------------------------------------------------------------------------------------------------------------------\n")))
+
+(de run-max-margin (n eta)
+  (printf "*** Max margin eta=%g decay=%g\n" eta)
+  (printf "    training set size:%d\n" (==> data size-training))
+  (printf "    test set size    :%d\n" (==> data size-testing))
+  (printf "    input dimension  :%d\n" (==> data nvariables))
+  (setq z (new max-margin  (==> data nvariables)))
+  (for (i 1 n)
+       (==> z train-stochastic 1 :data:inputs-train :data:outputs-train eta)
+       (print-results i)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; reading the database
+
+(de read-data ()
+  ;; create new dataset object
+  (setq data (new dataset))
+  ;; next line is old stuff. ignore
+  ;; (==> data read-ldat "pima-indians-diabetes.ldat" t 0.7)
+  ;;
+  ;; read data, and shuffle the examples
+  ;; spam detection dataset
+  (==> data read-spambase "../datasets/uci-spambase/spambase.data" t 0.7)
+  ;; house vote dataset
+  ;; (==> data read-housevotes "../datasets/uci-housevotes/house-votes-84.data" t 0.7)
+  ;; wisconsin breast cancer dataset
+  ;; (==> data read-breastcancer "../datasets/uci-breastcancer/breast-cancer-wisconsin.data" t 0.7)
+  ;; pima indian diabetes dataset
+  ;; (==> data read-pimaindians "../datasets/uci-pima-indians/pima-indians-diabetes.data" t 0.7)
+
+  ;; shuffle the samples, again, just in case.
+  (==> data shuffle)
+  (printf "total number of samples: %d\n" (==> data size))
+  (printf "number of input variables: %d\n" (==> data nvariables))
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; examples:
+
+;; read data
+(read-data)
+;; just type (example1) or
+;; (example1 'r 3000 1000 20 .01 0)
+;; This should give you about 8% test error with the spambase dataset.
+(de example1 (&optional (type 'r) (ptrain 200) (ptest 1000) (n 20) (eta 0.01) (decay 0.0))
+  ;; set training set size to ptrain and test set size to ptest
+  (==> data set-train-test ptrain ptest)
+  (selectq type
+    (p (run-perceptron n))
+    (l (run-linear-reg n eta decay))
+    (m (run-mse-solve decay))
+    (r (run-logistic-reg n eta decay))))
+
+;; (print "Training using 3000 samples, eta = 2.0")
+;; (example1 'r 3000 1000 20 1.0)
+;; (print "Training using 10 samples")
+;; (example1 'm 10 1000 20 2)
+;; (print "Training using 30 samples")
+;; (example1 'm 30 1000 20 2)
+;; (print "Training using 100 samples")
+;; (example1 'm 100 1000 20 2)
+;; (print "Training using 500 samples")
+;; (example1 'm 500 1000 20)
+;; (print "Training using 3000 samples")
+;; (example1 'p 10 1000 30 2)
+
+;; (print "Training using 10 samples")
+;; (example1 'l 10 1000 20 2)
+;; (print "Training using 30 samples")
+;; (example1 'l 30 1000 20 2)
+;; (print "Training using 100 samples")
+;; (example1 'l 100 1000 20 2)
+(example1 'l 30 1000 30 1.0 0.1)
+(print "Training using 3000 samples")
+
+;; (print "Training using 3000 samples eta = 0.2")
+;; (example1 'l 3000 1000 20 0.2)
+;; (print "Training using 3000 samples, eta = 0.3")
+;; (example1 'l 3000 1000 20 0.3)
+;; (print "Training using 3000 samples, eta = 0.4")
+;; (example1 'l 3000 1000 20 0.4)
+;; (print "Training using 3000 samples, eta = 0.5")
+;; (example1 'l 3000 1000 20 0.5)
+;; (print "Training using 3000 samples, eta = 0.6")
+;; (example1 'l 3000 1000 20 0.6)
+;; (print "Training using 3000 samples, eta = 0.7")
+;; (example1 'l 3000 1000 20 0.7)
+;; (print "Training using 3000 samples, eta = 0.8")
+;; (example1 'l 3000 1000 20 0.8)
+;; (print "Training using 3000 samples, eta = 0.9")
+;; (example1 'l 3000 1000 20 0.9)
+;; (print "Training using 3000 samples, eta = 1.0")
+;; (example1 'l 3000 1000 20 1.0)
+;; (print "Training using 3000 samples, eta = 1.1")
+;; (example1 'l 3000 1000 20 1.1)
+;; (print "Training using 3000 samples, eta = 1.2")
+;; (example1 'l 3000 1000 20 1.2)
+

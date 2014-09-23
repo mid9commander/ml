@@ -1,0 +1,297 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Linear Classifier classes
+;; Yann LeCun, 01/2004, 09/2004
+
+;; load linear algebra library for system solving function
+(libload "libnum/linalgebra")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; This is the logistic function used for logistic regression.
+;; If you prefer, you can also use the built-in hyperbolic
+;; tangent function tanh.
+(de logistic (x)
+  (if (< x (- 45)) 0
+    (if (> x 45) 1
+      (/ 1 (+ 1 (exp (- x)))))))
+
+;; normalize a vector to unit length
+(de idx-normalize (x)
+  (let ((z (idx-sumsqr x)))
+    (z (/ (sqrt (z))))
+    (idx-dotm0 x z x)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Linear Classifier class
+;; Specific learning rules are implemented by the subclasses.
+(defclass linear-classifier object
+  ((-idx1- (-double-)) weights)   ; weight vector
+  ((-double-) bias)     ; bias/threshold
+  ((-double-) sum)     ; weighted sum (before non linearity)
+  )
+
+;; constructor
+(defmethod linear-classifier linear-classifier (n)
+  (setq weights (double-array n))
+  (setq bias 1.0)
+  (setq sum 0.0))
+
+;; run a vector through the classifier
+;; and return the output: -1 for class 1, 1 for class 2
+(defmethod linear-classifier run (sample)
+  (let ((d (double-array)))
+    (idx-dot sample weights d)
+    (setq sum (+ bias (d))))
+  ;; return label with lowest energy
+  ;; Now, because this is a binary linear classifier we could
+  ;; implement this more simply and efficiently with something
+  ;; like (if (> sum 0) 1 -1) but the code below is more generic.
+  ;; (printf "sum = %2.3f " sum)
+  ;; (printf "label = %d\n" label)
+  ;;(pause)
+  (if (< (==> this energy 1) (==> this energy -1)) 1 -1))
+
+;; This is the energy function.
+;; It assumes that the weighted sum has already been computed
+;; and must return the energy (as a number) when passed
+;; the correct label (+1 or -1).
+;; You may define a "default" energy function here and
+;; define specific energies in the sub-classes if necessary.
+(defmethod linear-classifier energy (label)
+  (printf "this is just a placeholder for the energy\n")
+  (printf "method of the linear-classifier class\n")
+  (error "you must write this method"))
+
+;; place-holder. Should be defined by sub-classes
+(defmethod linear-classifier loss (label)
+  (printf "this is just a placeholder for the loss\n")
+  (printf "method of the linear-classifier class\n")
+  (error "you must write this method for the sub-class"))
+
+;; place-holder. Should be defined by sub-classes
+(defmethod linear-classifier learn-sample (sample label &optional a b c)
+  (let ((r (==> this run sample)))
+    (printf "this is just a placeholder for the learn-sample\n")
+    (printf "method of the linear-classifier class\n")
+    (error "you must write this method for the sub-class"))
+  )
+
+;; Test a single sample and return a list with the
+;; loss and a binary number: 1 if mistake, 0 if correct.
+(defmethod linear-classifier test-sample (sample label)
+  (let ((r (==> this run sample)))
+    (list
+     (==> this loss label)
+     (if (or (and (> r 0) (<= label 0))
+       (and (<= r 0) (> label 0)))
+   1 0))))
+
+;; Measure the average loss and classification error rate
+;; on a dataset. <samples> is a matrix that contains the
+;; training samples, <labels> is a vector that contains
+;; the desired output (+1 or -1).
+;; return a list with average loss and proportion of errors
+(defmethod linear-classifier test (samples labels)
+  (let ((errors 0) (total-loss 0) (n (idx-dim samples 0)))
+    (idx-bloop ((sample samples) (label labels))
+      (let ((res (==> this test-sample sample (label))))
+        (incr total-loss (car res))
+        (incr errors (cadr res))))
+    (list (/ total-loss n) (/ errors n))))
+
+;; train for <niter> sweeps over the training set <samples>
+;; and corresponding desired outputs <labels>.
+(defmethod linear-classifier train-stochastic
+           (niter samples labels &optional a b c)
+  (let ((errors 0) (total-loss 0) (n (idx-dim samples 0)) (counter 1) (old_weights (with-namespace lush1- (idx-copy weights))) (loop_counter 0) (convergence 0.0) (convergence_counter 0.0) (stop_counter 30))
+    (repeat niter
+      (idx-bloop ((sample samples) (label labels))
+        (with-namespace lush1- (idx-copy  weights old_weights))
+        (if (> counter stop_counter)
+            (progn
+              (printf "convergence detected at loop %d\n" (- loop_counter stop_counter))
+              (setq convergence 1)
+              (setq convergence_counter (- loop_counter stop_counter))
+              (setq counter 0))
+          (progn
+            (let ((r (==> this learn-sample sample (label) a b c)))
+              ;; detect convergence
+              ;; (printf "r = %d\n" ((double-array)r))
+              ;; (printf "label= %d" label)
+              (if (not (= ((double-array) r) label)) (setq counter 0))
+              (if (= convergence 0) ;; hasn't converge yet
+                (setq counter (+ counter 1)))
+              (setq loop_counter (+ loop_counter 1)))
+            ))) (if (= convergence_counter 0) loop_counter convergence_counter))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; Below is stuff that must be implemented
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; perceptron sub-class
+
+    (defclass perceptron linear-classifier)
+
+    ;; constructor
+    (defmethod perceptron perceptron (n)
+      (==> this linear-classifier n))
+
+    ;; this must return the energy for
+    ;; the label passed as argument (which is +1 or -1).
+    ;; This is called by the run function, hence
+    ;; it can be assumed that the weighted sum
+    ;; (the "sum" variable) has already been computed.
+    (defmethod perceptron energy (label)
+      (if (= label 1)
+          (if (>= sum 0) -1 1)
+        (if (= label -1)
+            (if (< sum 0) -1 1))))
+
+    ;; this must return the loss for
+    ;; the label passed as argument (which is +1 or -1).
+    ;; This is called after the run function, hence
+    ;; it can be assumed that the weighted sum
+    ;; (the "sum" variable) has already been computed.
+    (defmethod perceptron loss (label)
+      (if (or (and (< label 0) (>= sum 0)) (and (>= label 0) (< sum 0))) 1 0))
+
+    ;; this must perform one interation of stochastic
+    ;; learning with input vector "sample", desired
+    ;; output "label" (which is +1 or -1), and optional
+    ;; parameters a, b, and c (learning rate, regularizer
+    ;; coefficient...).
+    (defmethod perceptron learn-sample (sample label &optional a b c)
+      (let ((r (==> this run sample)))
+        (if (or (and (< r 0) (>= label 0)) (and (>= r 0) (< label 0)))
+            (==> this adjust-weight r label sample))))
+
+    ;; adjust the weight vector, and the bias
+    (defmethod perceptron adjust-weight (classification label sample)
+      (idx-add weights (idx-dotm0 sample ((double-array)(- label classification))) weights)
+      (incr bias (* (- label classification) 1)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; Linear regression sub-class
+
+    (defclass linear-reg linear-classifier)
+
+    (defmethod linear-reg linear-reg (n)
+      (==> this linear-classifier n))
+
+    ;; this must return the energy for
+    ;; the label passed as argument (which is +1 or -1).
+    ;; This is called by the run function, hence
+    ;; it can be assumed that the weighted sum
+    ;; (the "sum" variable) has already been computed.
+    (defmethod linear-reg energy (label)
+      (if (= label 1)
+          (if (>= sum 1) -1 1)
+        (if (= label -1)
+            (if (>= sum 1) 1 -1))))
+
+
+    ;; this must return the loss for
+    ;; the label passed as argument (which is +1 or -1).
+    ;; This is called after the run function, hence
+    ;; it can be assumed that the weighted sum
+    ;; (the "sum" variable) has already been computed.
+    (defmethod linear-reg loss (label)
+      (/ (* (- label sum) (- label sum)) 2))
+
+    ;; this must perform one interation of stochastic
+    ;; learning with input vector "sample", desired
+    ;; output "label" (which is +1 or -1), and optional
+    ;; parameters a, b, and c (learning rate, regularizer
+    ;; coefficient...).
+    ;; eta is the learning rate.
+    ;; gamma is the coefficient of the regularizer gamma*||W||^2 .
+    (defmethod linear-reg learn-sample (sample label eta  &optional (gamma 0) c)
+      (let ((r (==> this run sample)) (counter 0))
+        (if (not (= r label))  ;; adjust weights if prediction != label
+          (idx-sub (idx-dotm0 weights ((double-array) (- 1 (* eta decay)))) (idx-dotm0 (idx-dotm0 sample ((double-array) (- r label))) ((double-array) eta)) weights)
+          (setq bias (- 1 (* eta decay)))
+          (decr bias (* (* (- r label) 1) eta))
+          )r))
+
+    ;; this method finds the regularized least-square solution
+    ;; of a linear regression problem by solving the linear system
+    ;; AW = B, where A is the covariance matrix of the inputs,
+    ;; and B the cross-correlation between inputs and labels.
+    ;; This method takes a matrix of samples and a vector of labels.
+    ;; gamma is the coefficient of the regularizer gamma*||W||^2 .
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; (de example1 (&optional (type 'r) (ptrain 200) (ptest 1000) (n 20) (eta 0.01) (decay 0.0))
+    ;;  (run-mse-solve decay)
+    ;;    (==> z mse-solve :data:inputs-train :data:outputs-train decay)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    (defmethod linear-reg mse-solve (samples labels &optional (gamma 0))
+      (let ((a (compute-covariance-matrix samples))
+            (b (compute-cross-correlation samples labels)))
+        (setq weights (solve-lu a b))))
+
+       ;; compute the covariance matrix from samples
+       ;; formula for computing covariance matrix
+       ;; YtY
+     (de compute-covariance-matrix (samples)
+       (m*m (idx-transpose samples '(1 0)) samples))
+       ;; this method computes the correlation vector using the input samples
+       ;; and the labels
+     (de compute-cross-correlation (samples labels)
+       ;;  (let ((sss (double-array (length labels))))
+       ;;    (m*m (idx-transpose samples '(1 0)) sss))))
+       (let ((correlation (double-array (idx-dim samples 1))))
+         (idx-bloop ((sample samples) (label labels))
+           (idx-add correlation (idx-dotm0 sample label) correlation))correlation))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; logistic regression sub-class
+
+    (defclass logistic-reg linear-classifier)
+
+    (defmethod logistic-reg logistic-reg (n)
+      (==> this linear-classifier n))
+
+    ;; this must return the energy for
+    ;; the label passed as argument (which is +1 or -1).
+    ;; This is called by the run function, hence
+    ;; it can be assumed that the weighted sum
+    ;; (the "sum" variable) has already been computed.
+    (defmethod logistic-reg energy (label)
+      ;; use sigmoid function to predict outcome
+      ;; 1 / (1 + exp (-weights . x))
+      (let ((outcome (logistic sum)))
+        (if (= label 1)
+          (if (>= sum 0.5) -1 1)
+        (if (= label -1)
+            (if (>= sum 0.5) 1 -1)))))
+
+    ;; this must return the loss for
+    ;; the label passed as argument (which is +1 or -1).
+    ;; This is called after the run function, hence
+    ;; it can be assumed that the weighted sum
+    ;; (the "sum" variable) has already been computed.
+    ;; loss function : 2 * log (1 + exp ( -yiW.Xi)))
+    (defmethod logistic-reg loss (label)
+      ;; (pause)
+      (if (< sum (- 700)) 0
+        (if (> sum 700) 1400
+      ;;   (printf "sum = %d\n" sum)
+      ;; (printf "loss = %d\n" (* 2 (log (+ 1 (exp (- (* label sum)))))))
+          (* 2 (log (+ 1 (exp (- (* label sum)))))))))
+
+;; this must perform one interation of stochastic
+;; learning with input vector "sample", desired
+;; output "label" (which is +1 or -1), and optional
+;; parameters a, b, and c (learning rate, regularizer
+;; coefficient...).
+;; eta is the learning rate.
+;; gamma is the coefficient of the regularizer gamma*||W||^2 .
+(defmethod logistic-reg learn-sample (sample label eta  &optional (gamma 0) c)
+  (let ((r (==> this run sample)))
+    (idx-add (idx-dotm0 weights ((double-array) (- 1 (* eta decay)))) (idx-dotm0 (idx-dotm0 sample ((double-array) (- label (logistic sum)))) ((double-array) eta)) weights)
+    r))
+
